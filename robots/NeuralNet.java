@@ -2,9 +2,9 @@ package robots;
 
 import java.util.ArrayList;
 
-public class NN {
+public class NeuralNet {
 
-	public static double NNtrain(double[][] Xtrain, double[] Ytrain, double[][] w_hx, double[][] w_yh,
+	public static double train(double[][] Xtrain, double[] Ytrain, double[][] w_hx, double[][] w_yh,
 			boolean switch1) {
 
 		// variable declaration:
@@ -13,20 +13,15 @@ public class NN {
 		int c_b = 6;// no. of inputs to neural network(4states+1action) + 1 (bias)=6;
 		double rho = 0.00001;
 		double alpha = 0.9;
-		int n_x = 1;// Xtrain.length;
 		int d_x = Xtrain[0].length;
 		int n_y = Ytrain.length;
 		int d_y = 1;// Ytrain[0].length;
-		// max and min for random number
-		double max = 0.5;
-		double min = -0.5;
-
 		double[][] prev_delw_y = new double[d_y][no_h + 1];
 		double[][] prev_delw_h = new double[no_h][d_x];
 		double beta_2 = 0;
 		double curr_delw_y = 0;
 		double[] tj = new double[no_h + 1];
-		ArrayList<Double> error = new ArrayList<Double>();
+		new ArrayList<Double>();
 
 		for (int i = 0; i < no_h; i++) {
 			for (int j = 0; j < d_x; j++) {
@@ -55,13 +50,11 @@ public class NN {
 			y_hat[i] = 0;
 
 		}
-		int z = 1;
-
 		MatrixMultiplication matrix = new MatrixMultiplication();
 		double[][] multiplier = new double[][] { { 2, -1, 1 } };
 		double[][] multiplier1 = new double[][] { { 3 }, { 2 }, { 1 } };
 
-		double[][] cc = matrix.Multiply(multiplier, multiplier1);
+		matrix.Multiply(multiplier, multiplier1);
 
 		double nn_qvalue = 0;
 
